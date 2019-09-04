@@ -1,0 +1,121 @@
+<html>
+
+<head>
+  <title>mows</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <style>
+    body{
+    }
+    #title{
+      color: white;
+      text-shadow: 2px 2px 4px #000000;
+      position: absolute;
+      top: 30px;
+      left: 390px;
+      font-size: 50px;
+      font-weight: bold;
+    }
+    #brokerSection{
+      border: 1px solid black;
+      border-radius: 10px;
+      padding: 40px;
+      margin-top: 143px;
+      margin-left: 77px;
+      margin-right: 867px;
+      box-shadow: 5px 10px 8px 10px #888888;
+    }
+    #publishSection{
+      border: 1px solid black;
+      border-radius: 10px;
+      padding: 40px;
+      margin-left: 460px;
+      margin-top: -381px;
+      margin-right: 514px;
+      box-shadow: 5px 10px 8px 10px #888888;
+    }
+    input{
+      width: 210px;
+    }
+    #statusCheck{
+      color: green;
+    }
+    #subscribeSection{
+      border: 1px solid black;
+      border-radius: 10px;
+      padding: 50px;
+      margin-left: 823px;
+      margin-top: -325px;
+      margin-right: 77px;
+      box-shadow: 5px 10px 8px 10px #888888;
+    }
+    #receiver,th{
+      background-color: rgb(51, 153, 255);
+      color: white;
+    }
+    tr{
+      background-color: white;
+      color: black;
+    }
+    #receiver, table,th ,td{
+      padding-top: 30px;
+      padding-bottom: 30px;
+      padding-left: 80px;
+      padding-right: 80px;
+      border: 1px solid black;
+      border-collapse: collapse;
+      margin-top: 150px;
+      box-shadow: 5px 2px 8px 2px #888888;
+    }
+    h1{
+      color: white;
+      text-shadow: 2px 2px 4px #000000;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="title">MQTT over Websocket</h1>
+  <div id="brokerSection">
+    <h1>Broker</h1>
+    <h4>Address:</h4><input type="text" id="broker" name="address" value="ws://broker.hivemq.com:8000/mqtt" /><br><br>
+    <button type="button" id="btnConnect" class="btn btn-primary">Connect</button>
+    <button type="button" id="btnDisconnect" class="btn btn-primary">Disconnect</button>
+    <h3>Status</h3>
+    <br>
+    <h4 id="statusCheck"><i>Status Unknown......</i></h4>
+  </div>
+  <div id="publishSection">
+    <h1>Publish</h1>
+    <h4>Topic:</h4><input name="topic" id="pubTopic" />
+    <h4>Payload:</h4><input name="topic" id="pubPayload" /><br><br>
+    <button type="button" id="btnPublish" class="btn btn-primary">Publish</button>
+  </div>
+  <div id="subscribeSection">
+    <h1>Subscribe</h1>
+    <h4>Topic:</h4><input id="subTopic" /><br><br>
+    <button type="button" id="btnSubscribe" class="btn btn-primary">Subscribe</button>
+    <button type="button" id="btnUnsubscribe" class="btn btn-primary">Unsubscribe</button>
+  </div>
+  <div id="IncomingMsgSection">
+    <center>
+        <table id="receiver">
+            <thead>
+              <tr>
+                <th>Topic</th>
+                <th>Payload</th>
+                <th>Timestamp</th>
+              </tr>
+            </thead>
+            <tbody id="msg">
+      
+            </tbody>
+    </center>
+    </table>
+  </div>
+</body>
+<script src="scripts/browserMqtt.js"></script>
+<script src="scripts/controller.js"></script>
+
+</html>
